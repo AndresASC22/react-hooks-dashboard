@@ -14,13 +14,13 @@ import { useState } from 'react';
 function ToggleSwitch() {
   // TODO: Initialize state for the toggle (true = ON, false = OFF)
   // Hint: Use useState to create a boolean state variable
-
+  const [isON, setIsON] = useState(false);
 
   // Event handler to toggle the switch
   const handleToggle = () => {
     // TODO: Toggle the state between true and false
     // Hint: Use the setIsOn function with !isOn to flip the boolean value
-
+    setIsON(!isON);
   };
 
   return (
@@ -28,9 +28,15 @@ function ToggleSwitch() {
       {/* Status Display */}
       <div className="text-3xl font-bold">
         {/* TODO: Display "Status: ON" in green when isOn is true, "Status: OFF" in gray when false */}
-        Status: <span className="text-gray-400">
-          OFF
-        </span>
+        Status: {isON ? (
+          <span className="text-green-400">
+            ON
+          </span>
+        ) : ( 
+          <span className="text-gray-400">
+            OFF
+          </span>
+        )}  
       </div>
 
       {/* Toggle Switch */}
@@ -40,6 +46,11 @@ function ToggleSwitch() {
       >
         {/* TODO: Change background color to green-500 when ON, gray-300 when OFF */}
         {/* Switch Circle */}
+        {isON ? (
+          <div className="bg-gray-300"></div>
+        ) : (
+          <div className="bg-green-500"></div>
+        )}
         <div className="absolute top-1 left-1 w-8 h-8 bg-white rounded-full shadow-md transition-transform duration-300">
           {/* TODO: Add 'transform translate-x-10' class when ON to slide the circle */}
         </div>
